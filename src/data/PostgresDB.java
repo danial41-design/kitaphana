@@ -1,6 +1,6 @@
-package database;
+package data;
 
-import database.interfaces.IDB;
+import data.interfaces.IDB;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
