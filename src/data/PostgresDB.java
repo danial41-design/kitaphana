@@ -4,7 +4,7 @@ import data.interfaces.IDB;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-public class PostgreDB implements IDB {
+public class PostgresDB implements IDB {
 	private String host;
 	private String username;
 	private String password;
@@ -12,7 +12,7 @@ public class PostgreDB implements IDB {
 
 	private Connection connection;
 
-	public PostgreDB(String host, String username, String password, String dbname) {
+	public PostgresDB(String host, String username, String password, String dbname) {
 		setHost(host);
 		setUsername(username);
 		setPassword(password);
