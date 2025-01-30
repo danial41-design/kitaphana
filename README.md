@@ -59,4 +59,4 @@ kitaphana/
 3. Скомпилируйте и запустите проект с помощью команды:
   
    javac src/Main.java
-   java src/Main
+   java src/Main    
