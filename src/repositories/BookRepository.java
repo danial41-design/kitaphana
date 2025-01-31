@@ -28,7 +28,6 @@ public class BookRepository {
         return books;
     }
 
-    // Добавление новой книги
     public void addNewBook(String title, String author, int year, int quantity) throws SQLException {
         String query = "INSERT INTO librarydb (title, author, year, quantity) VALUES (?, ?, ?, ?)";
         try (Connection conn = db.getConnection();
