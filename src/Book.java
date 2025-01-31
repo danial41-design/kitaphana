@@ -1,4 +1,3 @@
-package wrongcode2;
 
 public class Book {
 	private int id;
