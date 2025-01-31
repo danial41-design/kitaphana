@@ -19,7 +19,6 @@ public class Main {
             new TakeBookMenuOption(bookController),
             new ReturnBookMenuOption(bookController),
             new ShowUsersMenuOption(userController),
-            new AddUserMenuOption(userController),
             new DeleteUserMenuOption(userController)
         );
 
