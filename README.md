@@ -1,33 +1,27 @@
-### Kitaphana (Библиотека)
+# Kitaphana (Library)
 
-#### ✔ Проект: Обзор
-Kitaphana — это приложение для управления библиотекой, разработанное на Java. Оно позволяет пользователям регистрироваться, входить в систему, просматривать доступные книги, брать книги на прокат и управлять своим профилем. Приложение взаимодействует с базой данных PostgreSQL для хранения и извлечения информации о пользователях и книгах.
+### Project Overview
+Kitaphana is a library management application developed in Java. It allows users to register, log in, browse available books, borrow books, and manage their profiles. The application interacts with a PostgreSQL database to store and retrieve information about users and books.
 
----
+### Key Features
+1. User Management
+   - User registration with name, surname, email, password, and phone number.
+   - Secure login authentication.
+   - Password change functionality.
+   - Profile update options (name, surname, phone number).
+   - User deletion.
 
-#### ✘ Основные функции
+2. Book Management
+   - View all books and available books in the library.
+   - Ability to borrow books.
+   - Automatic status update of books after borrowing.
 
-##### 1. Управление пользователями
-- Регистрация пользователей с указанием имени, фамилии, email, пароля и номера телефона.
-- Безопасная аутентификация при входе в систему.
-- Возможность смены пароля.
-- Обновление профиля (имя, фамилия, номер телефона).
-- Удаление пользователя.
+3. Security
+   - Password hashing for security.
+   - Email uniqueness check to prevent duplicate registrations.
+   - Validation of phone numbers.
 
-##### 2. Управление книгами
-- Просмотр всех книг и доступных книг в библиотеке.
-- Возможность взять книгу на прокат.
-- Автоматическое обновление статуса книги после взятия на прокат.
-
-##### 3. Безопасность
-- Хеширование паролей для обеспечения безопасности.
-- Проверка уникальности email для предотвращения дублирования регистраций.
-- Валидация номеров телефонов.
-
----
-
-#### ✘ Структура проекта
-
+### Project Structure
 kitaphana/
 ├── src/
 │   ├── Main.java
@@ -44,19 +38,16 @@ kitaphana/
 │   ├── Controller/
 │   │   ├── UserController.java
 ├── README.md
----
 
-#### ✘ Используемые технологии
-- Java (основная логика и ООП).
-- JDBC (Java Database Connectivity) для взаимодействия с базой данных.
-- PostgreSQL в качестве реляционной базы данных.
+### Technologies Used
+- Java (core logic and OOP).
+- JDBC (Java Database Connectivity) for database interaction.
+- PostgreSQL as the relational database.
 
----
-
-#### ✘ Как запустить проект
-1. Убедитесь, что у вас установлены Java и PostgreSQL.
-2. Создайте базу данных и настройте подключение в файле конфигурации.
-3. Скомпилируйте и запустите проект с помощью команды:
-  
-   javac src/Main.java
-   java src/Main    
+### How to Run the Project
+1. Make sure you have Java and PostgreSQL installed.
+2. Create a database and configure the connection in the configuration file.
+3. Compile and run the project using the following commands:
+     javac src/Main.java
+   java src/Main
+   
