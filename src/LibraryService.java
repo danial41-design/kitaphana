@@ -9,6 +9,7 @@ public interface LibraryService {
 	void returnBook(String name, String surname, String bookTitle) throws SQLException;
 	void addNewBook(String title, String author, int year, int quantity) throws SQLException;
 	void deleteUser(String name, String surname) throws SQLException;
+	public void deleteBook(String bookTitle) throws SQLException;
 }
 
 
