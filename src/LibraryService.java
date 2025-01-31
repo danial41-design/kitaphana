@@ -1,4 +1,3 @@
-package wrongcode2;
 
 import java.sql.SQLException;
 import java.util.List;
