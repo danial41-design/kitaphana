@@ -24,32 +24,59 @@ Library data management is a library management application developed in Java. I
 ### Project Structure
 
 ├── controllers
+
 │   ├── BookController.java
+
 │   ├── UserController.java
+
 ├── data
+
 │   ├── interfaces
+
 │   │   ├── IDB.java
+
 │   ├── PostgresDB.java
+
 ├── menu
+
 │   ├── options
+
 │   │   ├── AddBookMenuOption.java
+
 │   │   ├── AddUserMenuOption.java
+
 │   │   ├── DeleteBookMenuOption.java
+
 │   │   ├── DeleteUserMenuOption.java
+
 │   │   ├── ReturnBookMenuOption.java
+
 │   │   ├── ShowBooksMenuOption.java
+
 │   │   ├── TakeBookMenuOption.java
+
 │   ├── Menu.java
+
 │   ├── MenuOption.java
+
 ├── models
+
 │   ├── Book.java
+
 │   ├── User.java
+
 ├── repositories
+
 │   ├── BookRepository.java
+
 │   ├── UserRepository.java
+
 ├── Main.java
+
 ├── .gitignore
+
 ├── README.md
+
 └── librarysystem.iml
 
 
