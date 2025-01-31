@@ -1,3 +1,9 @@
+package controllers;
+
+import database.BookRepository;
+import java.sql.SQLException;
+import java.util.List;
+
 public class BookController {
     private BookRepository bookRepository;
 
@@ -16,6 +22,7 @@ public class BookController {
         }
     }
 
+    // Добавление новой книги
     public void addNewBook(String title, String author, int year, int quantity) {
         try {
             bookRepository.addNewBook(title, author, year, quantity);
@@ -33,4 +40,23 @@ public class BookController {
             System.out.println("Error while deleting book: " + e.getMessage());
         }
     }
+
+    public void takeBook(String bookTitle) {
+        try {
+            bookRepository.takeBook(bookTitle);
+            System.out.println("Book taken successfully!");
+        } catch (SQLException e) {
+            System.out.println("Error while taking book: " + e.getMessage());
+        }
+    }
+
+    public void returnBook(String bookTitle) {
+        try {
+            bookRepository.returnBook(bookTitle);
+            System.out.println("Book returned successfully!");
+        } catch (SQLException e) {
+            System.out.println("Error while returning book: " + e.getMessage());
+        }
+    }
 }
+
