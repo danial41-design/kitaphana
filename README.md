@@ -22,33 +22,36 @@ Library data management is a library management application developed in Java. I
    - Validation of phone numbers.
 
 ### Project Structure
-kitaphana/
 
-├── src/
-
-│    ├── Main.java
-
-│    ├── models/
-
-│    │   ├── User.java
-
-│    │   ├── Book.java
-
-│    ├── Interfaces/
-│    │   ├── IUserService.java
-
-│    ├── Implementation/
-│    │   ├── UserService.java
-
-│    ├── Repository/
-│    │   ├── UserRepository.java
-
-│    │   ├── BookRepository.java
-
-│    ├── Controller/
-│    │   ├── UserController.java
-
+├── controllers
+│   ├── BookController.java
+│   ├── UserController.java
+├── data
+│   ├── interfaces
+│   │   ├── IDB.java
+│   ├── PostgresDB.java
+├── menu
+│   ├── options
+│   │   ├── AddBookMenuOption.java
+│   │   ├── AddUserMenuOption.java
+│   │   ├── DeleteBookMenuOption.java
+│   │   ├── DeleteUserMenuOption.java
+│   │   ├── ReturnBookMenuOption.java
+│   │   ├── ShowBooksMenuOption.java
+│   │   ├── TakeBookMenuOption.java
+│   ├── Menu.java
+│   ├── MenuOption.java
+├── models
+│   ├── Book.java
+│   ├── User.java
+├── repositories
+│   ├── BookRepository.java
+│   ├── UserRepository.java
+├── Main.java
+├── .gitignore
 ├── README.md
+└── librarysystem.iml
+
 
 ### Technologies Used
 - Java (core logic and OOP).
