@@ -1,3 +1,9 @@
+package controllers;
+
+import database.UserRepository;
+import java.sql.SQLException;
+import java.util.List;
+
 public class UserController {
     private UserRepository userRepository;
 
@@ -34,4 +40,3 @@ public class UserController {
         }
     }
 }
-
