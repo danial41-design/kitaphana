@@ -1,7 +1,7 @@
-# Kitaphana (Library)
+Library data management
 
 ### Project Overview
-Kitaphana is a library management application developed in Java. It allows users to register, log in, browse available books, borrow books, and manage their profiles. The application interacts with a PostgreSQL database to store and retrieve information about users and books.
+Library data management is a library management application developed in Java. It allows users to register, log in, browse available books, borrow books, and manage their profiles. The application interacts with a PostgreSQL database to store and retrieve information about users and books.
 
 ### Key Features
 1. User Management
