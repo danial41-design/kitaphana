@@ -16,6 +16,7 @@ public class Main {
 			System.out.println("4. Add a new book");
 			System.out.println("5. Show all users");
 			System.out.println("6. Delete a user");
+			System.out.println("7. Delete a book");
 			System.out.println("0. Exit");
 			System.out.print("Choose an option: ");
 			int choice = getIntInput(scanner);
@@ -70,6 +71,11 @@ public class Main {
                         			String surname = scanner.nextLine();
                         			manager.deleteUser(name, surname);
                         			break;
+					case 7:
+                       				 System.out.print("Enter the book title to delete: ");
+                       				 String bookTitle = scanner.nextLine();
+                        			 manager.deleteBook(bookTitle);
+                        			 break;
 					case 0:
 						System.out.println("Exiting...");
 						db.close();
