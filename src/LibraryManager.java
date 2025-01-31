@@ -31,7 +31,28 @@ public class LibraryManager implements LibraryService{
 		}
 		return books;
 	}
-
+	@Override
+	public void deleteUser(String name, String surname) throws SQLException {
+    	String checkQuery = "SELECT id FROM \"user\" WHERE name = ? AND surname = ?";
+    	try (Connection conn = db.getConnection(); 
+        	 PreparedStatement checkStmt = conn.prepareStatement(checkQuery)) {
+        	checkStmt.setString(1, name);
+        	checkStmt.setString(2, surname);
+        	ResultSet rs = checkStmt.executeQuery();
+        
+        if (rs.next()) {
+            String query = "DELETE FROM \"user\" WHERE name = ? AND surname = ?";
+            try (PreparedStatement pstmt = conn.prepareStatement(query)) {
+                pstmt.setString(1, name);
+                pstmt.setString(2, surname);
+                pstmt.executeUpdate();
+                System.out.println("User deleted successfully!");
+            }
+        } else {
+            System.out.println("User not found.");
+        }
+   		}
+    	}
 	@Override
 	public List<User> getAllUsers() throws SQLException {
 		List<User> users = new ArrayList<>();
