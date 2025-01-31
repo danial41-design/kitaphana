@@ -1,66 +1,87 @@
-import data.PostgresDB;
-
-import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
-        PostgresDB postgresDB = new PostgresDB(
-                "jdbc:postgresql://localhost:5432",
-                "postgres",
-                "4584",
-                "library"
-        );
-        Connection connection = postgresDB.getConnection();
-        DatabaseInitializer.initializeDatabase(connection);
-        LibraryDB libraryDB = new LibraryDB(postgresDB.getConnection());
-        LibraryService libraryService = new LibraryService(libraryDB);
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		IDB db = new PostgreDB("jdbc:postgresql://localhost:5432", "postgres", "135790", "library");
+		LibraryManager manager = new LibraryManager(db);
 
-        Scanner scanner = new Scanner(System.in);
+		while (true) {
+			System.out.println("\nMenu:");
+			System.out.println("1. Show all books");
+			System.out.println("2. Take a book");
+			System.out.println("3. Return a book");
+			System.out.println("4. Add a new book");
+			System.out.println("5. Show all users");
+			System.out.println("0. Exit");
+			System.out.print("Choose an option: ");
+			int choice = getIntInput(scanner);
 
-        while (true) {
-            System.out.println("\n1. show all books");
-            System.out.println("2. get books");
-            System.out.println("3. give a book");
-            System.out.println("4. Add a new book");
-            System.out.println("5. close");
-            System.out.print("select action: ");
-            int option = scanner.nextInt();
+			try {
+				switch (choice) {
+					case 1:
+						List<Book> books = manager.getAllBooks();
+						for (Book book : books) {
+							System.out.println(book);
+						}
+						break;
+					case 2:
+						System.out.print("Enter your name: ");
+						String name = scanner.nextLine();
+						System.out.print("Enter your surname: ");
+						String surname = scanner.nextLine();
+						System.out.print("Enter the book title: ");
+						String bookTitle = scanner.nextLine();
+						manager.takeBook(name, surname, bookTitle);
+						break;
+					case 3:
+						System.out.print("Enter your name: ");
+						name = scanner.nextLine();
+						System.out.print("Enter your surname: ");
+						surname = scanner.nextLine();
+						System.out.print("Enter the book title: ");
+						bookTitle = scanner.nextLine();
+						manager.returnBook(name, surname, bookTitle);
+						break;
+					case 4:
+						System.out.print("Enter the book title: ");
+						String title = scanner.nextLine();
+						System.out.print("Enter the author: ");
+						String author = scanner.nextLine();
+						System.out.print("Enter the year: ");
+						int year = getIntInput(scanner);
+						System.out.print("Enter the quantity: ");
+						int quantity = getIntInput(scanner);
+						manager.addNewBook(title, author, year, quantity);
+						break;
+					case 5:
+						List<User> users = manager.getAllUsers();
+						for (User user : users) {
+							System.out.println(user);
+						}
+						break;
+					case 0:
+						System.out.println("Exiting...");
+						db.close();
+						return;
+					default:
+						System.out.println("Invalid option. Please try again.");
+				}
+			} catch (SQLException e) {
+				System.out.println("Database error: " + e.getMessage());
+			}
+		}
+	}
 
-            switch (option) {
-                case 1:
-                    libraryService.showAllBooks();
-                    break;
-                case 2:
-                    System.out.print("input ID: ");
-                    int takeId = scanner.nextInt();
-                    libraryService.takeBook(takeId);
-                    break;
-                case 3:
-                    System.out.print("input ID: ");
-                    int returnId = scanner.nextInt();
-                    libraryService.returnBook(returnId);
-                    break;
-                case 4:
-                    System.out.print("name of book: ");
-                    scanner.nextLine();
-                    String name = scanner.nextLine();
-                    System.out.print("autor of book: ");
-                    String author = scanner.nextLine();
-                    System.out.print("year of book: ");
-                    int year = scanner.nextInt();
-                    System.out.print("number of books: ");
-                    int quantity = scanner.nextInt();
-                    libraryService.addNewBook(name, author, year, quantity);
-                    break;
-
-                case 5:
-                    postgresDB.close();
-                    System.out.println("code is closed.");
-                    return;
-                default:
-                    System.out.println("wrong option, please try again.");
-            }
-        }
-    }
+	private static int getIntInput(Scanner scanner) {
+		while (true) {
+			try {
+				return Integer.parseInt(scanner.nextLine());
+			} catch (NumberFormatException e) {
+				System.out.print("Invalid input. Please enter a number: ");
+			}
+		}
+	}
 }
