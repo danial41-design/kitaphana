@@ -1,11 +1,9 @@
-package data.interfaces;
-
-public interface IDB {package data.interfaces;
+package wrongcode2;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 
 public interface IDB {
-    Connection getConnection();
-    void close();
-}
+	Connection getConnection() throws SQLException;
+	void close();
 }
