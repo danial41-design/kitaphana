@@ -80,7 +80,6 @@ public class BookController {
     }
 
     private void addUserBook(String name, String surname, String bookTitle) throws SQLException {
-        // Здесь вызовем метод в репозитории, чтобы обновить bookTitle у пользователя
         // userRepository.addBookToUser(name, surname, bookTitle);
     }
 
