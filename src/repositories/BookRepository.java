@@ -20,7 +20,7 @@ public class BookRepository {
              PreparedStatement pstmt = conn.prepareStatement(query)) {
             pstmt.setString(1, "%" + title + "%");
             pstmt.setString(2, "%" + author + "%");
-            pstmt.setString(3, "%" + category + "%"); // Используем category
+            pstmt.setString(3, "%" + category + "%"); 
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
                 books.add(new Book(
@@ -29,7 +29,7 @@ public class BookRepository {
                         rs.getString("author"),
                         rs.getInt("year"),
                         rs.getInt("quantity"),
-                        rs.getString("category")  // Добавляем категорию
+                        rs.getString("category")  
                 ));
             }
         }
@@ -37,7 +37,7 @@ public class BookRepository {
     }
 
 
-    // Метод для фильтрации книг по статусу (доступна/занята)
+    
     public List<Book> filterBooksByStatus(String status) throws SQLException {
         List<Book> books = new ArrayList<>();
         String query;
@@ -47,7 +47,7 @@ public class BookRepository {
         } else if (status.equals("taken")) {
             query = "SELECT * FROM books WHERE quantity = 0 ORDER BY title ASC";
         } else {
-            return books; // Если не "available", ни "taken", возвращаем пустой список
+            return books; 
         }
 
         try (Connection conn = db.getConnection();
@@ -67,7 +67,7 @@ public class BookRepository {
         return books;
     }
 
-    // Метод для получения всех книг
+  
     public List<Book> getAllBooks() throws SQLException {
         List<Book> books = new ArrayList<>();
         String query = "SELECT * FROM books ORDER BY id ASC";
@@ -81,14 +81,14 @@ public class BookRepository {
                         rs.getString("author"),
                         rs.getInt("year"),
                         rs.getInt("quantity"),
-                        rs.getString("category")  // Добавляем категорию
+                        rs.getString("category")  
                 ));
             }
         }
         return books;
     }
 
-    // Метод для добавления новой книги
+    
     public void addNewBook(String title, String author, int year, int quantity) throws SQLException {
         String query = "INSERT INTO books (title, author, year, quantity) VALUES (?, ?, ?, ?)";
         try (Connection conn = db.getConnection();
@@ -101,7 +101,7 @@ public class BookRepository {
         }
     }
 
-    // Метод для удаления книги
+
     public void deleteBook(String bookTitle) throws SQLException {
         String query = "DELETE FROM books WHERE title = ?";
         try (Connection conn = db.getConnection();
@@ -120,7 +120,7 @@ public class BookRepository {
         }
     }
 
-    // Метод для возврата книги
+   
     public void returnBook(String bookTitle) throws SQLException {
         String query = "UPDATE books SET quantity = quantity + 1 WHERE title = ?";
         try (Connection conn = db.getConnection();
@@ -130,7 +130,7 @@ public class BookRepository {
         }
     }
 
-    // Метод для проверки доступности книги (книга должна быть в базе и количество > 0)
+    
     public boolean isBookAvailable(String bookTitle) throws SQLException {
         String query = "SELECT quantity FROM books WHERE title = ?";
         try (Connection conn = db.getConnection();
@@ -142,7 +142,7 @@ public class BookRepository {
                 return quantity > 0;
             }
         }
-        return false; // Если книги нет или количество равно 0, вернём false
+        return false; 
     }
 }
 
