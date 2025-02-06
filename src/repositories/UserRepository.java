@@ -34,7 +34,7 @@ public class UserRepository {
         return users;
     }
 
-    // Метод для проверки существования пользователя
+
     public boolean userExists(String name, String surname) throws SQLException {
         String query = "SELECT COUNT(*) FROM \"users\" WHERE name = ? AND surname = ?";
         try (Connection conn = db.getConnection();
@@ -47,7 +47,7 @@ public class UserRepository {
         }
     }
 
-    // Получаем книгу по имени пользователя
+
     public String getBookTitleByUser(String name, String surname) throws SQLException {
         String query = "SELECT booktitle FROM \"users\" WHERE name = ? AND surname = ?";
         try (Connection conn = db.getConnection();
@@ -62,7 +62,7 @@ public class UserRepository {
         return null;
     }
 
-    // Создаем пользователя
+    
     public void addUser(String name, String surname, String bookTitle) throws SQLException {
         String query = "INSERT INTO \"users\" (name, surname, booktitle) VALUES (?, ?, ?)";
 
@@ -75,7 +75,7 @@ public class UserRepository {
         }
     }
 
-    // Обновляем booktitle у пользователя
+    
     public void updateBookTitle(String name, String surname, String bookTitle) throws SQLException {
         String query = "UPDATE \"users\" SET booktitle = ? WHERE name = ? AND surname = ?";
 
@@ -99,7 +99,7 @@ public class UserRepository {
         }
     }
 
-    // Очищаем booktitle у пользователя
+    
     public void deleteBookTitle(String name, String surname) throws SQLException {
         String query = "UPDATE \"users\" SET booktitle = NULL WHERE name = ? AND surname = ?";
 
