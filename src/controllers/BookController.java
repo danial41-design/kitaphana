@@ -29,7 +29,7 @@ public class BookController {
         }
     }
 
-    // Метод для фильтрации книг по статусу
+
     public void filterBooksByStatus(String status) {
         try {
             List<Book> books = bookRepository.filterBooksByStatus(status);
@@ -67,17 +67,13 @@ public class BookController {
     }
 
     public void takeBook(String name, String surname, String bookTitle) throws SQLException {
-        // Проверяем, есть ли книга в базе
+
         if (!bookRepository.isBookAvailable(bookTitle)) {
             System.out.println("This book is not available.");
             return;
         }
-
-        // Здесь вызываем метод для добавления книги пользователю
-        // Предположим, что у нас уже есть метод для обновления поля bookTitle в таблице users
         addUserBook(name, surname, bookTitle);
 
-        // Уменьшаем количество книги в базе на 1
         bookRepository.takeBook(bookTitle);
 
         System.out.println("Book taken successfully!");
@@ -85,31 +81,29 @@ public class BookController {
 
     private void addUserBook(String name, String surname, String bookTitle) throws SQLException {
         // Здесь вызовем метод в репозитории, чтобы обновить bookTitle у пользователя
-        // Пример:
         // userRepository.addBookToUser(name, surname, bookTitle);
     }
 
     public void returnBook(String name, String surname, String bookTitle) throws SQLException {
-        // Проверка, существует ли пользователь
         if (!userRepository.userExists(name, surname)) {
             System.out.println("User not found.");
             return;
         }
 
-        // Проверка, есть ли у пользователя эта книга
+
         String existingBook = userRepository.getBookTitleByUser(name, surname);
         if (existingBook == null || !existingBook.equals(bookTitle)) {
             System.out.println("This user does not have this book.");
             return;
         }
 
-        // Очищаем booktitle у пользователя
+  
         userRepository.deleteBookTitle(name, surname);
         bookRepository.returnBook(bookTitle);
         System.out.println("Book successfully returned!");
     }
 
-    // Метод для проверки доступности книги
+
     public boolean isBookAvailable(String bookTitle) throws SQLException {
         return bookRepository.isBookAvailable(bookTitle);
     }
