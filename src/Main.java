@@ -29,8 +29,8 @@ public class Main {
                 new DeleteBookMenuOption(bookController),
                 new TakeBookMenuOption(bookController,userController),
                 new ReturnBookMenuOption(bookController,userController),
-                new SearchBooksMenuOption(bookController), // Новая опция для поиска
-                new FilterBooksMenuOption(bookController), // Новая опция для фильтрации
+                new SearchBooksMenuOption(bookController), 
+                new FilterBooksMenuOption(bookController), 
                 new ShowUsersMenuOption(userController),
                 new DeleteUserMenuOption(userController)
         );
